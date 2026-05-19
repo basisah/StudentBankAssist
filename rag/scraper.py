@@ -53,6 +53,7 @@ def scrape(url:str) -> str:
         str: The scraped data as a string.
     """
     response = requests.get(url,headers={'User-Agent': 'Mozilla/5.0'},timeout=10)
+    response.raise_for_status()  # Ensure we notice bad responses
     soup = BeautifulSoup(response.text, 'html.parser')
     for tag in soup(['nav', 'footer', 'header', 'script', 'style']):
         tag.decompose()
