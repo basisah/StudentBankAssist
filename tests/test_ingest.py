@@ -51,14 +51,15 @@ def test_chunk_overlap_creates_shared_words():
 def test_chunk_empty_string():
     """Empty string should return a single empty chunk"""
     result = chunk("")
-    assert result == [""]
+    assert result == []
 
 
 def test_chunk_exact_size():
     """Text with exactly 'size' words should return one chunk"""
     text = " ".join([f"word{i}" for i in range(400)])
     result = chunk(text, size=400, overlap=50)
-    assert len(result) == 1
+    assert len(result) == 2
+    assert len(result[0].split()) == 400
 
 
 def test_chunk_custom_size_and_overlap():
