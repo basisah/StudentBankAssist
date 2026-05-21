@@ -24,7 +24,7 @@ triggers = ["speak to someone", "human agent", "representative",
     "not sure", "uncertain", "unsure", "unaware", "unknown"]
 
 # Phrases that indicate the bot's response was low-confidence
-uncerstain_phrases = [
+uncertain_phrases = [
     "i don't know", "i cannot answer", "not sure", "unclear", "speak to agent", 
     "human agent", "representative", "i'm not certain", 
     "i don't have enough information",
@@ -36,9 +36,8 @@ def should_escalate(user_input: str, bot_response: str) -> bool:
     """
     Determine if the conversation should be escalated to a human agent.
     
-    Checks for:
-        1. Trigger keywords in the user's message
-        2. Low-confidence phrases in the bot's response
+    Checks for:  1. Trigger keywords in the user's message
+                 2. Low-confidence phrases in the bot's response
     
     Args:
         user_input (str): The user's input message.
@@ -54,7 +53,7 @@ def should_escalate(user_input: str, bot_response: str) -> bool:
     for trigger in triggers:
         if trigger in msg:
             return True
-    for phrase in uncerstain_phrases:
+    for phrase in uncertain_phrases:
         if phrase in resp:
             return True
     

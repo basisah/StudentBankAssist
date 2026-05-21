@@ -1,6 +1,6 @@
 # tests/test_escalation.py
 import pytest
-from chat.escalation import should_escalate, triggers as TRIGGERS, uncerstain_phrases as UNCERTAIN_PHRASES
+from chat.escalation import should_escalate, triggers as TRIGGERS, uncertain_phrases as UNCERTAIN_PHRASES
 
 
 # ========== Trigger keyword tests ==========
