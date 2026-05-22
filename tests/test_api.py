@@ -49,9 +49,9 @@ async def test_docs_url_returns_paths():
 @patch("main.should_escalate")
 async def test_chat_valid_request(mock_escalate, mock_chat):
     mock_chat.return_value = {
-        "response": "A TFSA is a tax-free savings account.",
-        "sources": [{"document": "TFSA info", "source_file": "rbc_tfsa.txt"}]
-    }
+    "response": "A TFSA is a tax-free savings account.",
+    "sources": [{"document": "TFSA info", "metadata": {"source": "rbc_tfsa.txt"}}]  # this line
+}
     mock_escalate.return_value = False
 
     async with AsyncClient(transport=transport, base_url="http://test") as client:
@@ -93,9 +93,9 @@ async def test_chat_missing_message():
 @patch("main.should_escalate")
 async def test_chat_escalation_triggers_on_fraud(mock_escalate, mock_chat):
     mock_chat.return_value = {
-        "response": "I detect suspicious activity.",
-        "sources": [{"document": "fraud info", "source_file": "rbc.txt"}]
-    }
+    "response": "I detect suspicious activity.",
+    "sources": [{"document": "fraud info", "metadata": {"source": "rbc.txt"}}]  # this line
+}
     mock_escalate.return_value = True
 
     async with AsyncClient(transport=transport, base_url="http://test") as client:
