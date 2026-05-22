@@ -3,7 +3,7 @@
 AI-powered chatbot that answers questions about RBC banking products using scraped data from RBC and Government of Canada websites. Built with RAG (Retrieval Augmented Generation) so every response is grounded in real data, not hallucinated.
 
 
-##What it looks like
+## What it looks like
 <img width="2864" height="1548" alt="image" src="https://github.com/user-attachments/assets/b2ef3e96-4a8f-487d-99ac-6133e7b3e8d5" />
 
 
