@@ -4,7 +4,7 @@ from pydantic import BaseModel, field_validator, ConfigDict
 from typing import Optional
 from datetime import datetime
 
-def ChatRequest(BaseModel):
+class ChatRequest(BaseModel):
     model_config = ConfigDict(strip_whitespace=True)
     session_id: str
     message: str
@@ -18,26 +18,26 @@ def ChatRequest(BaseModel):
         return v
     
 
-def Source(BaseModel):
+class Source(BaseModel):
     document: str
     metadata: dict
 
-def ChatResponse(BaseModel):
+class ChatResponse(BaseModel):
     session_id: str
     response: str
     sources: list[Source]
     escalate: bool
     timestamp: datetime = datetime.now()
 
-def EscalateRequest(BaseModel):
+class EscalateRequest(BaseModel):
     session_id: str
     reason: Optional[str] = None
 
 
-def EscalateResponse(BaseModel):
+class EscalateResponse(BaseModel):
     message: str
 
-def Product_Info(BaseModel):
+class Product_Info(BaseModel):
     name: str
     category: str
     description: str
