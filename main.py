@@ -4,8 +4,13 @@ from chat.engine import chat
 from chat.escalation import should_escalate
 from chat.engine import context_history
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
+
 
 app = FastAPI(title="RBC Account Assistant", version="1.0.0")
+@app.get("/")
+async def serve_chat():
+    return FileResponse("chat.html")
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
