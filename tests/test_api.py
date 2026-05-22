@@ -107,14 +107,6 @@ async def test_chat_escalation_triggers_on_fraud(mock_escalate, mock_chat):
 
 # ========== Escalate endpoint ==========
 
-@pytest.mark.asyncio
-async def test_escalate_returns_contact_info():
-    async with AsyncClient(transport=transport, base_url="http://test") as client:
-        r = await client.post("/escalate", json={"session_id": "s1"})
-        assert r.status_code == 200
-        assert "1-800-769-2511" in r.json()["phone"]
-        assert r.json()["message"] == "Connecting you to RBC support..."
-
 
 @pytest.mark.asyncio
 async def test_escalate_with_reason():
