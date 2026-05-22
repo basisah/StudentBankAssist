@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 client = OpenAI()
-chroma_client = chromadb.Client()
+chroma_client = chromadb.PersistentClient(path="./chroma_db")
 collection = chroma_client.get_or_create_collection(name="bank")
 
 

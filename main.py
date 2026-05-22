@@ -3,8 +3,15 @@ from models import ChatRequest, ChatResponse, EscalateRequest, EscalateResponse
 from chat.engine import chat
 from chat.escalation import should_escalate
 from chat.engine import context_history
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI(title="RBC Account Assistant", version="1.0.0")
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 @app.post("/chat", response_model=ChatResponse)
 async def chat_endpoint(req: ChatRequest):
     result = chat(req.message,req.session_id,)
