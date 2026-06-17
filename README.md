@@ -1,4 +1,4 @@
-# RBC Account Assistant
+# StudentBankAssist
 
 AI-powered chatbot that answers questions about RBC banking products using scraped data from RBC and Government of Canada websites. Built with RAG (Retrieval Augmented Generation) so every response is grounded in real data, not hallucinated.
 
